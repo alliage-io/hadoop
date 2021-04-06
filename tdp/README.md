@@ -33,3 +33,7 @@ mvn -Ptest-patch -Pparallel-tests -Pshelltest -Pnative -Drequire.fuse -Drequire.
 - -Drequire.zstd: Fail if libzstd.so is not found
 - -Dsurefire.rerunFailingTestsCount: Retries failed test
 - --fail-never: Does not interrumpt the tests if one module fails
+
+## Test execution notes
+
+See `./test_notes.txt`
