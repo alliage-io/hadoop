@@ -1,0 +1,24 @@
+podTemplate {
+    node('tdp-builder') {
+        stage('Git clone') {
+            checkout([$class: 'GitSCM', branches: [[name: 'branch-3.1.1-TDP']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'http://gitlab.adaltas.com/dataclan/hadoop.git']]])
+        }
+        stage('Build') {
+            container('tdp-builder'){
+                sh '''
+                mvn -Dmaven.repo.local=./.m2 --batch-mode -DskipTests -fae clean install -Dmaven.javadoc.skip=true -Dcheckstyle.skip=true -Dfindbugs.skip=true -Dspotbugs.skip=true
+                '''
+            }
+        }
+        stage('Run unit tests') {
+            container('tdp-builder') {
+                sh '''
+                mvn -Dmaven.repo.local=./.m2 --batch-mode -Ptest-patch -Pparallel-tests -Pshelltest -Pnative -Drequire.fuse -Drequire.openssl -Drequire.snappy -Drequire.valgrind -Drequire.zstd -Drequire.test.libhadoop -Dsurefire.rerunFailingTestsCount=3 -Pyarn-ui clean test --fail-never
+                '''
+            }
+        }
+        stage('Publish tests results') {
+            junit '**/surefire-reports/*.xml'
+        }
+    }
+}
