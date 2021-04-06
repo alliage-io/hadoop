@@ -1,0 +1,70 @@
+# Tests failures
+
+org.apache.hadoop.io.compress.TestCompressorDecompressor.testCompressorDecompressor
+org.apache.hadoop.io.compress.TestCompressorDecompressor.testCompressorDecompressorWithExeedBufferLimit
+--> Ok in local Docker
+--> https://issues.apache.org/jira/browse/HADOOP-16768
+
+org.apache.hadoop.yarn.server.resourcemanager.security.TestDelegationTokenRenewer.testRMRestartWithExpiredToken
+--> Flaky
+
+org.apache.hadoop.net.TestDNS.testRDNS
+--> Ok in local Docker
+
+org.apache.hadoop.service.launcher.TestServiceInterruptHandling.testRegisterAndRaise
+--> Flaky
+
+org.apache.hadoop.io.compress.snappy.TestSnappyCompressorDecompressor.testSnappyCompressDecompressInMultiThreads
+--> Ok in local Docker
+--> Same as https://issues.apache.org/jira/browse/HADOOP-16768
+
+org.apache.hadoop.fs.TestTrash.testTrashRestarts
+[ERROR] Failures: 
+[ERROR] org.apache.hadoop.fs.TestTrash.testTrashRestarts(org.apache.hadoop.fs.TestTrash)
+[ERROR]   Run 1: TestTrash.testTrashRestarts:688->verifyAuditableTrashEmptier:995 Expected num of checkpoints is 3, but actual is 4 expected:<3> but was:<4>
+[ERROR]   Run 2: TestTrash.testTrashRestarts:688->verifyAuditableTrashEmptier:995 Expected num of checkpoints is 3, but actual is 8 expected:<3> but was:<8>
+[ERROR]   Run 3: TestTrash.testTrashRestarts:688->verifyAuditableTrashEmptier:995 Expected num of checkpoints is 3, but actual is 11 expected:<3> but was:<11>
+[ERROR]   Run 4: TestTrash.testTrashRestarts:688->verifyAuditableTrashEmptier:995 Expected num of checkpoints is 3, but actual is 15 expected:<3> but was:<15>
+--> Test directory not cleaned properly ?
+--> Ok with manual retry
+
+org.apache.hadoop.hdfs.tools.TestDFSZKFailoverController.testManualFailoverWithDFSHAAdmin
+--> KO with ZooKepper 3.5.5
+--> OK with 3.4.13
+
+org.apache.hadoop.hdfs.TestFileChecksum.*
+--> Flaky for some
+--> Fixed later https://issues.apache.org/jira/browse/HDFS-15643
+--> 11 tests in this class
+--> All ok with local Docker
+
+org.apache.hadoop.hdfs.TestReconstructStripedFileWithRandomECPolicy.testRecoverOneParityBlock1
+--> Flaky
+--> Ok in local Docker
+
+org.apache.hadoop.yarn.server.resourcemanager.reservation.TestCapacityOverTimePolicy.testAllocation[Duration 90,000,000, height 0.25, numSubmission 1, periodic 86400000)]
+--> Ok with retry
+
+org.apache.hadoop.io.compress.zstd.TestZStandardCompressorDecompressor.testCompressingWithOneByteOutputBuffer
+org.apache.hadoop.io.compress.zstd.TestZStandardCompressorDecompressor.testZStandardDirectCompressDecompress
+--> https://issues.apache.org/jira/browse/HADOOP-15822
+
+org.apache.hadoop.ipc.TestIPC.testRTEDuringConnectionSetup
+--> KO
+--> Fixed in https://issues.apache.org/jira/browse/HADOOP-15787
+
+org.apache.hadoop.security.TestLdapGroupsMapping.testLdapReadTimeout
+org.apache.hadoop.security.TestLdapGroupsMapping.testLdapConnectionTimeout
+--> KO
+--> Fixed in https://issues.apache.org/jira/browse/HADOOP-17340
+
+org.apache.hadoop.security.ssl.TestSSLFactory.testServerWeakCiphers
+--> KO
+--> Fixed in https://issues.apache.org/jira/browse/HADOOP-16016
+
+org.apache.hadoop.mapred.TestMRTimelineEventHandling.testMRNewTimelineServiceEventHandling
+--> KO
+
+org.apache.hadoop.yarn.server.nodemanager.containermanager.TestNMProxy.testNMProxyRPCRetry
+--> KO
+--> Fixed in https://issues.apache.org/jira/browse/YARN-10455
