@@ -12,7 +12,7 @@ The file `./Jenkinsfile-sample` can be used in a Jenkins / Kubernetes environmen
 mvn clean install -Pdist -Dtar -Pnative -DskipTests -Dmaven.javadoc.skip=true
 ```
 
-`-Pdist -Dtar` generates a `.tar.gz` file of the release at `./hadoop-dist/target/hadoop-3.1.1-TDP-0.1.0.tar.gz`.
+`-Pdist -Dtar` generates a `.tar.gz` file of the release at `./hadoop-dist/target/hadoop-3.1.1-TDP-0.1.0-SNAPSHOT.tar.gz`.
 
 ## Testing parameters
 
@@ -32,7 +32,7 @@ mvn -Ptest-patch -Pparallel-tests -Pshelltest -Pnative -Drequire.fuse -Drequire.
 - -Drequire.valgrind:
 - -Drequire.zstd: Fail if libzstd.so is not found
 - -Dsurefire.rerunFailingTestsCount: Retries failed test
-- --fail-never: Does not interrumpt the tests if one module fails
+- --fail-never: Does not interrupt the tests if one module fails
 
 ## Test execution notes
 
