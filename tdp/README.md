@@ -9,7 +9,7 @@ The file `./Jenkinsfile-sample` can be used in a Jenkins / Kubernetes environmen
 ## Making a release
 
 ```
-mvn clean install -Pdist -Dtar -DskipTests -Dmaven.javadoc.skip=true
+mvn clean install -Pdist -Dtar -Pnative -DskipTests -Dmaven.javadoc.skip=true
 ```
 
 `-Pdist -Dtar` generates a `.tar.gz` file of the release at `./hadoop-dist/target/hadoop-3.1.1-TDP-0.1.0.tar.gz`.
