@@ -12,9 +12,6 @@ pipeline {
             steps {
                 echo "Cloning..."
                 git branch: 'branch-3.1.1-TDP-alliage', url: 'https://github.com/Yanis77240/hadoop'
-                sh '''
-                ls
-                '''
             }
         }
         stage('Build') {
@@ -27,12 +24,9 @@ pipeline {
         }
         stage("Publish to Nexus Repository Manager") {
             steps {
-                echo "Publishing..."
-                withCredentials([usernamePassword(credentialsId: 'jenkins-user', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                    sh 'echo $user'
-                    sh 'echo $pass'
-                    sh 'cat settings.xml'
-                    sh 'mvn clean deploy -e -X -DskipTests -s settings.xml'
+                echo "Deploy..."
+                withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                    sh 'mvn clean deploy -DskipTests -s settings.xml'
                 }
             }        
         }
