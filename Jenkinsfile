@@ -21,8 +21,7 @@ pipeline {
             steps {
                 echo "Building..."
                 sh '''
-                cd hadoop-build-tools
-                mvn clean install -DskipTests
+                mvn clean install -Pdist -Dtar -Pnative -DskipTests -Dmaven.javadoc.skip=true
                 '''
             }
         }
@@ -32,7 +31,8 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'jenkins-user', passwordVariable: 'pass', usernameVariable: 'user')]) {
                     sh 'echo $user'
                     sh 'echo $pass'
-                    sh 'mvn clean deploy -e -X -DskipTests -s hadoop/settings.xml'
+                    sh 'cat settings.xml'
+                    sh 'mvn clean deploy -e -X -DskipTests -s settings.xml'
                 }
             }        
         }
