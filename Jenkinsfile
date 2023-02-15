@@ -32,7 +32,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'jenkins-user', passwordVariable: 'pass', usernameVariable: 'user')]) {
                     sh 'echo $user'
                     sh 'echo $pass'
-                    sh 'mvn clean deploy -e -X -DskipTests -s settings.xml'
+                    sh 'mvn clean deploy -e -X -DskipTests -s hadoop/settings.xml'
                 }
             }        
         }
