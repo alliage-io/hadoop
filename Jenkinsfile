@@ -11,7 +11,7 @@ pipeline {
         stage('clone') {
             steps {
                 echo "Cloning..."
-                git branch: 'branch-3.1.1-TDP', url: 'https://github.com/TOSIT-IO/hadoop'
+                git branch: 'branch-3.1.1-TDP-alliage', url: 'https://github.com/Yanis77240/hadoop'
                 sh '''
                 ls
                 '''
