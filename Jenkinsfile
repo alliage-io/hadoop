@@ -1,45 +1,40 @@
 pipeline {
     agent { 
         node {
-            label 'tdp-builder'
-        }
-    }
+            label 'docker-tdp-builder'
+            }
+      }
     triggers {
         pollSCM '0 1 * * *'
-    }
+      }
     stages {
-        stage('Git Clone') {
+        stage('clone') {
             steps {
-                echo "Cloning.."
+                echo "Cloning..."
                 git branch: 'branch-3.1.1-TDP', url: 'https://github.com/TOSIT-IO/hadoop'
                 sh '''
                 ls
                 '''
             }
         }
-        stage ('Build') {
+        stage('Build') {
             steps {
-                echo "Cloning.."
+                echo "Building..."
                 sh '''
-                mvn clean install -Pdist -Dtar -Pnative -DskipTests -Dmaven.javadoc.skip=true
+                cd hadoop-build-tools
+                mvn clean install -DskipTests
                 '''
             }
         }
-        stage('Test') {
+        stage("Publish to Nexus Repository Manager") {
             steps {
-                echo "Testing.."
-                sh '''
-                echo "doing testing stuff.."
-                '''
-            }
-        }
-        stage('Deliver') {
-            steps {
-                echo 'Deliver....'
-                sh '''
-                echo "doing delivery stuff.."
-                '''
-            }
+                echo "Publishing..."
+                withCredentials([usernamePassword(credentialsId: 'jenkins-user', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                    sh 'echo $user'
+                    sh 'echo $pass'
+                    sh 'mvn clean deploy -e -X -DskipTests -s settings.xml'
+                }
+            }        
         }
     }
 }

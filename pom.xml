@@ -41,9 +41,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
       <url>${distMgmtStagingUrl}</url>
     </repository>
     <snapshotRepository>
-      <id>${distMgmtSnapshotsId}</id>
-      <name>${distMgmtSnapshotsName}</name>
-      <url>${distMgmtSnapshotsUrl}</url>
+      <id>nexus</id>
+      <name>my Nexus</name>
+      <url>http://172.19.0.3:8081/repository/my-maven-test/</url>
     </snapshotRepository>
     <site>
       <id>apache.website</id>
@@ -53,9 +53,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 
   <repositories>
     <repository>
-      <id>${distMgmtSnapshotsId}</id>
-      <name>${distMgmtSnapshotsName}</name>
-      <url>${distMgmtSnapshotsUrl}</url>
+      <id>nexus</id>
+      <name>my Nexus</name>
+      <url>http://172.19.0.3:8081/repository/my-maven-test/</url>
     </repository>
     <repository>
       <id>repository.jboss.org</id>
