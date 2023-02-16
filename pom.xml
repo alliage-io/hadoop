@@ -43,7 +43,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <snapshotRepository>
       <id>nexus</id>
       <name>my Nexus</name>
-      <url>http://172.19.0.3:8081/repository/my-maven-test/</url>
+      <url>http://172.19.0.2:8081/repository/my-maven-test/</url>
     </snapshotRepository>
     <site>
       <id>apache.website</id>
@@ -55,7 +55,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <repository>
       <id>nexus</id>
       <name>my Nexus</name>
-      <url>http://172.19.0.3:8081/repository/my-maven-test/</url>
+      <url>http://172.19.0.2:8081/repository/my-maven-test/</url>
     </repository>
     <repository>
       <id>repository.jboss.org</id>
