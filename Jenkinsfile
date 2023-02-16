@@ -19,7 +19,6 @@ pipeline {
                 echo "Building..."
                 sh '''
                 mvn clean install -Pdist -Dtar -Pnative -DskipTests -Dmaven.javadoc.skip=true
-                ls /hadoop-dist/target
                 '''
             }
         }
