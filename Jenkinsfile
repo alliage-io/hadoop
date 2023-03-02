@@ -22,6 +22,14 @@ pipeline {
                 '''
             }
         }
+        stage('Test') {
+            steps {
+                echo "Testing..."
+                sh '''
+                mvn test -Pnative -Dtest=allNative --fail-never
+                '''
+            }
+        }
         stage("Publish to Nexus Repository Manager") {
             steps {
                 echo "Deploy..."
