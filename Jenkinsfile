@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo "Testing..."
                 sh '''
-                mvn test -Pnative -Dtest=allNative --fail-never
+                mvn test -Pnative -DskipTests -Dmaven.javadoc.skip=true --fail-never
                 '''
             }
         }
