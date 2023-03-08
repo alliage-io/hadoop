@@ -25,19 +25,19 @@ pipeline {
                 '''
             }
         }
-        stage('Test') {
+        /*stage('Test') {
             steps {
                 echo "Testing..."
                 sh '''
                 mvn test -Pnative -DskipTests -Dmaven.javadoc.skip=true --fail-never
                 '''
             }
-        }
+        }*/
         stage("Publish to Nexus Repository Manager") {
             steps {
                 echo "Deploy..."
                 withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                    sh 'mvn clean deploy -DskipTests -s settings.xml'
+                    sh 'mvn deploy -DskipTests -s settings.xml'
                 }
             }        
         }
