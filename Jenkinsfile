@@ -14,7 +14,7 @@ podTemplate(containers: [
             }
             stage('Git Clone') {
                 echo "Cloning.."
-                git branch: 'branch-3.1.1-TDP-alliage', url: 'https://github.com/Yanis77240/hadoop'
+                git branch: 'branch-3.1.1-TDP-alliage-k8s', url: 'https://github.com/Yanis77240/hadoop'
             }   
             stage ('Build') {
                 echo "Building.."
