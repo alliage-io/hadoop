@@ -1,7 +1,7 @@
 podTemplate {
     node('tdp-builder') {
         stage('Git clone') {
-            checkout([$class: 'GitSCM', branches: [[name: 'branch-3.1.1-TDP']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'http://gitlab.adaltas.com/dataclan/hadoop.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: 'branch-3.1.4-TDP']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'http://gitlab.adaltas.com/dataclan/hadoop.git']]])
         }
         stage('Build') {
             container('tdp-builder'){
