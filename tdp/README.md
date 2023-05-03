@@ -1,6 +1,6 @@
 # TDP Hadoop Notes
 
-The version 3.1.4-0.0-SNAPSHOT of Apache Hadoop is based on the `rel/release-3.1.4` tag of the Apache [repository](https://github.com/apache/hadoop/tree/rel/release-3.1.4).
+The version 3.1.4-0.0 of Apache Hadoop is based on the `rel/release-3.1.4` tag of the Apache [repository](https://github.com/apache/hadoop/tree/rel/release-3.1.4).
 
 ## Jenkinfile
 
@@ -12,7 +12,7 @@ The file `./Jenkinsfile-sample` can be used in a Jenkins / Kubernetes environmen
 mvn clean install -Pdist -Dtar -Pnative -DskipTests -Dmaven.javadoc.skip=true
 ```
 
-`-Pdist -Dtar` generates a `.tar.gz` file of the release at `./hadoop-dist/target/hadoop-3.1.4-0.0-SNAPSHOT.tar.gz`.
+`-Pdist -Dtar` generates a `.tar.gz` file of the release at `./hadoop-dist/target/hadoop-3.1.4-0.0.tar.gz`.
 
 ## Testing parameters
 
