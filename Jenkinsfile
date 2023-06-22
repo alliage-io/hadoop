@@ -27,7 +27,7 @@ podTemplate(containers: [
                 sh '''
                 mvn test -Pnative -DskipTests -Dmaven.javadoc.skip=true --fail-never
                 '''
-            }*/
+            }
             stage('Deliver') {
                 echo "Deploy..."
                 withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
