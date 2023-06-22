@@ -25,7 +25,7 @@ podTemplate(containers: [
             stage('Test') {
                 echo "Testing.."
                 sh '''
-                mvn test -Pnative -DskipTests -Dmaven.javadoc.skip=true --fail-never
+                mvn clean test -DskipTests -Dmaven.javadoc.skip=true --fail-never
                 '''
             }
             stage('Deliver') {
