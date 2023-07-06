@@ -109,7 +109,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <shell-executable>bash</shell-executable>
 
     <!--Excluded tests-->
-    <excludedTests>**/TestCompressorDecompressor.java, **/TestSnappyCompressorDecompressor.java, **/TestServiceInterruptHandling.java, **/TestLdapGroupsMapping.java, **/TestFileChecksum.java, **/TestDFSStripedOutputStreamWithFailureWithRandomECPolicy.java, **/TestDFSStripedInputStreamWithRandomECPolicy.java, **/TestAddOverReplicatedStripedBlocks.java, **/TestReencryptionWithKMS.java, **/TestLazyPersistReplicaRecovery.java, **/TestFileChecksumCompositeCrc.java, **/TestProcfsBasedProcessTree.java, **/TestContainerLaunch.java, **/TestContainersMonitor.java, **/TestSchedulingWithAllocationRequestId.java, **/TestAbstractYarnScheduler.java, **/TestMetricsInvariantChecker.java, **/TestMRTimelineEventHandling.java </excludedTests>
+    <test.exclude>TestCompressorDecompressor, TestSnappyCompressorDecompressor, TestServiceInterruptHandling, TestLdapGroupsMapping, TestFileChecksum, TestDFSStripedOutputStreamWithFailureWithRandomECPolicy, TestDFSStripedInputStreamWithRandomECPolicy, TestAddOverReplicatedStripedBlocks, TestReencryptionWithKMS, TestLazyPersistReplicaRecovery, TestFileChecksumCompositeCrc, TestProcfsBasedProcessTree, TestContainerLaunch, TestContainersMonitor, TestSchedulingWithAllocationRequestId, TestAbstractYarnScheduler, TestMetricsInvariantChecker, TestMRTimelineEventHandling </test.exclude>
   </properties>
 
   <modules>
