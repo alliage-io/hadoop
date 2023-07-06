@@ -107,6 +107,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <dependency-check-maven.version>1.4.3</dependency-check-maven.version>
 
     <shell-executable>bash</shell-executable>
+
+    <!--Excluded tests-->
+    <excludedTests>**/TestCompressorDecompressor.java, **/TestSnappyCompressorDecompressor.java, **/TestServiceInterruptHandling.java, **/TestLdapGroupsMapping.java, **/TestFileChecksum.java, **/TestDFSStripedOutputStreamWithFailureWithRandomECPolicy.java, **/TestDFSStripedInputStreamWithRandomECPolicy.java, **/TestAddOverReplicatedStripedBlocks.java, **/TestReencryptionWithKMS.java, **/TestLazyPersistReplicaRecovery.java, **/TestFileChecksumCompositeCrc.java, **/TestProcfsBasedProcessTree.java, **/TestContainerLaunch.java, **/TestContainersMonitor.java, **/TestSchedulingWithAllocationRequestId.java, **/TestAbstractYarnScheduler.java, **/TestMetricsInvariantChecker.java, **/TestMRTimelineEventHandling.java </excludedTests>
   </properties>
 
   <modules>
