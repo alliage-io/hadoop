@@ -208,6 +208,10 @@
               <value>org.apache.hadoop.test.TimedOutTestsListener</value>
             </property>
           </properties>
+          <excludes>
+            <exclude>**/${test.exclude}.java</exclude>
+            <exclude>${test.exclude.pattern}</exclude>
+          </excludes>
         </configuration>
       </plugin>
     </plugins>

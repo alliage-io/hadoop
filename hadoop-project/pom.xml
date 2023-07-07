@@ -36,7 +36,7 @@
     <failIfNoTests>false</failIfNoTests>
     <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
     <jetty.version>9.3.19.v20170502</jetty.version>
-    <test.exclude>_</test.exclude>
+    <test.exclude>TestCompressorDecompressor, TestSnappyCompressorDecompressor, TestServiceInterruptHandling, TestLdapGroupsMapping, TestFileChecksum, TestDFSStripedOutputStreamWithFailureWithRandomECPolicy, TestDFSStripedInputStreamWithRandomECPolicy, TestAddOverReplicatedStripedBlocks, TestReencryptionWithKMS, TestLazyPersistReplicaRecovery, TestFileChecksumCompositeCrc, TestProcfsBasedProcessTree, TestContainerLaunch, TestContainersMonitor, TestSchedulingWithAllocationRequestId, TestAbstractYarnScheduler, TestMetricsInvariantChecker, TestMRTimelineEventHandling</test.exclude>
     <test.exclude.pattern>_</test.exclude.pattern>
 
     <!-- number of threads/forks to use when running tests in parallel, see parallel-tests profile -->

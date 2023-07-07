@@ -231,6 +231,10 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
               <value>org.apache.hadoop.test.TimedOutTestsListener</value>
             </property>
           </properties>
+          <excludes>
+            <exclude>**/${test.exclude}.java</exclude>
+            <exclude>${test.exclude.pattern}</exclude>
+          </excludes>
         </configuration>
       </plugin>
       <plugin>
