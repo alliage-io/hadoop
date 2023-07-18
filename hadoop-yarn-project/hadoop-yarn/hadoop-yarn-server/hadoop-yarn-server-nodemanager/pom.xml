@@ -309,7 +309,6 @@
             <configuration>
               <excludes>
                 <exclude>org.apache.hadoop.yarn.server.nodemanager.containermanager.linux.**</exclude>
-                <exclude>**/${test.exclude}.java</exclude>
               </excludes>
             </configuration>
           </plugin>
@@ -339,6 +338,7 @@
           </systemPropertyVariables>
           <excludes>
             <exclude>**/TestFSDownload.java</exclude>
+            <exclude>**/${test.exclude}.java</exclude>
           </excludes>
         </configuration>
       </plugin>
