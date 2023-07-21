@@ -30,6 +30,15 @@ podTemplate(containers: [
                 mvn -Ptest-patch -Pparallel-tests -Pshelltest -Pnative -Drequire.fuse -Drequire.openssl -Drequire.snappy -Drequire.valgrind -Drequire.zstd -Drequire.test.libhadoop -Dsurefire.rerunFailingTestsCount=3 clean test
                 '''
             }
+            stage('Send CSV to Database') {
+                echo "send tests to database"
+                withEnv(["number=${currentBuild.number}"]) {
+                    sh'''
+                    mysql -h 10.100.99.143 -u root -padmin tests -e "CREATE TABLE hadoop_${number} (Runs VARCHAR(255), Failures VARCHAR(255), Errors VARCHAR(255), Skipped VARCHAR(255), Test_Name VARCHAR(255));"
+                    mysql -h 10.100.99.143 -u root -padmin tests -e "LOAD DATA LOCAL INFILE 'output-tests.csv' INTO TABLE hadoop_${number} FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (Runs, Failures, Errors, Skipped, @var_Test_name) SET Test_name = IFNULL(NULLIF(@var_Test_name, ''), 'not_precised');"
+                    '''
+                }
+            }
             stage('Deliver') {
                 echo "Deploy..."
                 withCredentials([usernamePassword(credentialsId: '4b87bd68-ad4c-11ed-afa1-0242ac120002', passwordVariable: 'pass', usernameVariable: 'user')]) {
