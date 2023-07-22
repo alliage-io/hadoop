@@ -27,7 +27,7 @@ podTemplate(containers: [
             stage('Test') {
                 echo "Testing.."
                 sh '''
-                mvn -Ptest-patch -Pparallel-tests -Pshelltest -Pnative -Drequire.fuse -Drequire.openssl -Drequire.snappy -Drequire.valgrind -Drequire.zstd -Drequire.test.libhadoop -Dsurefire.rerunFailingTestsCount=3 clean test | grep -E '(Errors:|Failures:|Skipped:)' > tee output-tests.csv
+                mvn -Ptest-patch -Pparallel-tests -Pshelltest -Pnative -Drequire.fuse -Drequire.openssl -Drequire.snappy -Drequire.valgrind -Drequire.zstd -Drequire.test.libhadoop -Dsurefire.rerunFailingTestsCount=3 --fail-never clean test | grep -E '(Errors:|Failures:|Skipped:)' > tee output-tests.csv
                 '''
             }
             stage('Send CSV to Database') {
