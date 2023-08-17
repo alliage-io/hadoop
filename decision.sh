@@ -4,7 +4,7 @@
 
 build_number=$1  # First argument passed to the script
 
-file="comparison.csv"
+file="comparison-java.csv"
 
 if [ -s "$file" ]; then # if the file is not empty
     echo "There are new errors compared to the comparison run."
