@@ -12,7 +12,7 @@ if [ -s "$file" ]; then # if the file is not empty
     curl -v -u $user:$pass --upload-file "$file" http://10.10.10.11:30000/repository/java-test-comparison/hadoop/comparison-"$build_number".csv
     exit 1  # Exit with an error code
 else
-    curl -v -u $user:$pass --upload-file "$file" http://10.10.10.11:30000/repository/java-test-comparison/hadoop/passed2run-tests-"$build_number".txt
+    curl -v -u $user:$pass --upload-file "$file" http://10.10.10.11:30000/repository/java-test-reports/hadoop/passed2run-tests-"$build_number".txt
     echo "No new errors in the tests."
     # Continues the pipeline
 fi
