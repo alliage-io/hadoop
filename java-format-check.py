@@ -30,6 +30,7 @@ if sys.argv[1] != "0":
             print(dataframe.dtypes)
         else:
             print('Wrong schema')
+            sys.exit(1)
     else:
         print("Wrong columns")
         sys.exit(1)
