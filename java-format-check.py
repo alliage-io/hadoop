@@ -1,10 +1,7 @@
 import pandas as pd
 import sys
 
-
-# define file
-
-
+# First check if the user gave the "0" argument which means that there will be no comparison
 if sys.argv[1] != "0":
     # define file
     comparison_file = sys.argv[1]
