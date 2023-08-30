@@ -16,11 +16,11 @@ podTemplate(containers: [
                 git branch: 'branch-3.1.1-TDP-alliage-k8s', url: 'https://github.com/Yanis77240/hadoop'
             }
             stage('Chose comparison') {
-                withEnv(["file=${input message: 'Select file in http://10.10.10.11:30000/repository/scala-test-reports/', parameters: [string('number of results file')]}"]) {
+                withEnv(["file=${input message: 'Select file in http://10.10.10.11:30000/repository/java-test-reports/', parameters: [string('number of results file')]}"]) {
                     withEnv(["number=${currentBuild.number}"]) {
                         sh '''
                         cd test_comparison
-                        curl -v http://10.10.10.11:30000/repository/scala-test-reports/hadoop/${file} > ${file}
+                        curl -v http://10.10.10.11:30000/repository/java-test-reports/hadoop/${file} > ${file}
                         python3 comparison-file-check.py ${file}
                         echo "python3 main.py ${number} ${file}" > transformation.sh
                         chmod 777 transformation.sh
@@ -58,7 +58,7 @@ podTemplate(containers: [
                         cd test_comparison
                         ./transformation.sh
                         ./decision.sh ${number}
-                        curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/scala-test-reports/hadoop/results-${number}.json
+                        curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/java-test-reports/hadoop/results-${number}.json
                         '''
                     }
                 }
