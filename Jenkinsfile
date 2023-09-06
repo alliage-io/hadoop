@@ -52,7 +52,7 @@ podTemplate(containers: [
                         cd test_comparison
                         ./transformation.sh
                         ./decision.sh ${number}
-                        curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/component-test-comparison/hadoop-3.1.1//results-${number}.json
+                        curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/component-test-comparison/hadoop-3.1.1/results-${number}.json
                         '''
                     }
                 }
