@@ -49,7 +49,7 @@ podTemplate(containers: [
                         /*sh'./test-comparison/src/grep-commands/grep-scalatest.sh'*/
                         /* Perform the data transformation and the comparison*/
                         sh '''
-                        cd test_comparison
+                        cd test-comparison
                         ./transformation.sh
                         ./decision.sh ${number}
                         curl -v -u $user:$pass --upload-file results-${number}.json http://10.110.4.212:8081/repository/component-test-comparison/hadoop-3.1.1/results-${number}.json
