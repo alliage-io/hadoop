@@ -530,6 +530,18 @@ public class UserGroupInformation {
     user.setLogin(login);
   }
 
+  /** This method checks for a successful Kerberos login
+    * and returns true by default if it is not using Kerberos.
+    *
+    * @return true on successful login
+   */
+  public boolean isLoginSuccess() {
+    LoginContext login = user.getLogin();
+    return (login instanceof HadoopLoginContext)
+        ? ((HadoopLoginContext) login).isLoginSuccess()
+        : true;
+  }
+
   /**
    * Create a UserGroupInformation for the given subject.
    * This does not change the subject or acquire new credentials.
@@ -1148,6 +1160,23 @@ public class UserGroupInformation {
   }
 
   /**
+   * Force re-Login a user in from the ticket cache irrespective of the last
+   * login time. This method assumes that login had happened already. The
+   * Subject field of this UserGroupInformation object is updated to have the
+   * new credentials.
+   *
+   * @throws IOException
+   *           raised on errors performing I/O.
+   * @throws KerberosAuthException
+   *           on a failure
+   */
+  @InterfaceAudience.Public
+  @InterfaceStability.Evolving
+  public void forceReloginFromTicketCache() throws IOException {
+    reloginFromTicketCache(true);
+  }
+
+  /**
    * Re-Login a user in from the ticket cache.  This
    * method assumes that login had happened already.
    * The Subject field of this UserGroupInformation object is updated to have
@@ -1158,6 +1187,11 @@ public class UserGroupInformation {
   @InterfaceAudience.Public
   @InterfaceStability.Evolving
   public void reloginFromTicketCache() throws IOException {
+    reloginFromTicketCache(false);
+  }
+
+  private void reloginFromTicketCache(boolean ignoreLastLoginTime)
+      throws IOException {
     if (!shouldRelogin() || !isFromTicket()) {
       return;
     }
@@ -1920,6 +1954,11 @@ public class UserGroupInformation {
       super(appName, subject, null, conf);
       this.appName = appName;
       this.conf = conf;
+    }
+
+    /** Get the login status. */
+    public boolean isLoginSuccess() {
+      return isLoggedIn.get();
     }
 
     String getAppName() {
