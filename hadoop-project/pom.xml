@@ -87,7 +87,7 @@
     <protobuf-maven-plugin.version>0.5.1</protobuf-maven-plugin.version>
     <os-maven-plugin.version>1.5.0.Final</os-maven-plugin.version>
 
-    <zookeeper.version>3.4.13</zookeeper.version>
+    <zookeeper.version>3.4.14</zookeeper.version>
     <curator.version>2.13.0</curator.version>
     <findbugs.version>3.0.5</findbugs.version>
     <spotbugs.version>3.1.0-RC1</spotbugs.version>
