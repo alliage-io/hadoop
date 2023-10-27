@@ -48,6 +48,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import javax.security.auth.DestroyFailedException;
@@ -1948,6 +1949,7 @@ public class UserGroupInformation {
   private static class HadoopLoginContext extends LoginContext {
     private final String appName;
     private final HadoopConfiguration conf;
+    private AtomicBoolean isLoggedIn = new AtomicBoolean();
 
     HadoopLoginContext(String appName, Subject subject,
                        HadoopConfiguration conf) throws LoginException {
@@ -1985,6 +1987,7 @@ public class UserGroupInformation {
         long start = Time.monotonicNow();
         try {
           super.login();
+          isLoggedIn.set(true);
           metric = metrics.loginSuccess;
         } finally {
           metric.add(Time.monotonicNow() - start);
@@ -1995,8 +1998,7 @@ public class UserGroupInformation {
     @Override
     public void logout() throws LoginException {
       synchronized(getSubjectLock()) {
-        if (this.getSubject() != null
-            && !this.getSubject().getPrivateCredentials().isEmpty()) {
+        if (isLoggedIn.compareAndSet(true, false)) {
           super.logout();
         }
       }
